@@ -36,7 +36,14 @@ const Card = (props) => {
             <div className='user-card'>
         <div className='user-profile'>
             <div className='heading'>
-                <UserIcon style={{height: '3rem', width: '3rem', fill: null}} />
+                <UserIcon 
+                    style={{
+                        height: '3rem', 
+                        width: '3rem', 
+                        fill: role === "Administrator" ? "var(--color-adm)"
+                        : role === "User" ? "var(--color-user)"
+                        : role === "Viewer" ? "var(--color-viewer)" : null
+                    }} />
                 <div>
                     <h4>{props.name}</h4>
                     <p>{props.role}</p>
@@ -66,7 +73,6 @@ const Card = (props) => {
     </div>
     </Container>
   )
-
 }
 
 const Container = styled.div`
