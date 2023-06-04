@@ -94,8 +94,6 @@ const Container = styled.div`
         gap: 1rem;
     }
     .button{
-        display: flex;
-        justify-content: flex-end;
         cursor: pointer;
     }
     .email{
@@ -106,9 +104,6 @@ const Container = styled.div`
     }
     h6{ 
         padding-top: .6rem;
-    }
-    p, h4, h6{
-        margin-bottom: 0;
     }
 `;
 

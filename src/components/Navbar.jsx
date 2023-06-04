@@ -20,7 +20,7 @@ const Container = styled.div`
         gap: .25rem;
         align-items: center;
         justify-content: center;
-        padding: 2rem;
+        padding: 1.5rem;
         box-shadow: 0 2px 3px var(--color-shadow);
         background-color: var(--color-white);
     }
