@@ -17,15 +17,13 @@ const Card = (props) => {
     }
 
     function formatPhoneNumber(phoneNumberString) {
-        var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
-        var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-        if (match) {
-          return '(' + match[1] + ') ' + match[2] + '-' + match[3];
-        }
-        return null;
+        //captures the number in divided parts
+        var match = ('' + phoneNumberString).match(/^(\d{3})(\d{3})(\d{4})$/);
+        //format number
+        return '(' + match[1] + ') ' + match[2] + '-' + match[3];
       }
 
-      function fornatDate(proposedDate){
+    function formatDate(proposedDate){
         var date = moment(proposedDate);
         return date.format('l LT')
       }
@@ -33,44 +31,46 @@ const Card = (props) => {
 
   return (
     <Container>
-            <div className='user-card'>
-        <div className='user-profile'>
-            <div className='heading'>
-                <UserIcon 
-                    style={{
-                        height: '3rem', 
-                        width: '3rem', 
-                        fill: role === "Administrator" ? "var(--color-adm)"
-                        : role === "User" ? "var(--color-user)"
-                        : role === "Viewer" && "var(--color-viewer)" 
-                    }} />
-                <div>
-                    <h4>{props.name}</h4>
-                    <p>{props.role}</p>
-                    <p className='email'>{props.email}</p>
+        <div className='user-card'>
+            <div className='user-profile'>
+                <div className='heading'>
+                    <UserIcon 
+                        style={{
+                            height: '3rem', 
+                            width: '3rem', 
+                            //color code user icon based on role
+                            fill: role === "Administrator" ? "var(--color-adm)"
+                            : role === "User" ? "var(--color-user)"
+                            : role === "Viewer" && "var(--color-viewer)" 
+                        }} />
+                    <div>
+                        <h4>{props.name}</h4>
+                        <p>{props.role}</p>
+                        <p className='email'>{props.email}</p>
+                    </div>
+                </div>
+                
+                <div className='button'>
+                    {expand ? 
+                        <div type="button" onClick={showInfo}><Collapse /></div> 
+                        : <div type="button" onClick={showInfo}><Expand /></div>
+                    }
                 </div>
             </div>
-            <div className='button'>
-                {expand ? 
-                    <div type="button" onClick={showInfo}><Collapse /></div> 
-                    : <div type="button" onClick={showInfo}><Expand /></div>
-                }
-            </div>
+
+            {expand && 
+                <div className='user-info'>
+                    <h6>Address</h6>
+                    <p>{props.address}</p>
+                    <h6>Phone</h6>
+                    <p>{formatPhoneNumber(props.phone)}</p>
+                    <h6>Created At</h6>
+                    <p>{formatDate(props.created)}</p>
+                    <h6>Last Logged In</h6>
+                    <p>{formatDate(props.lastLog)}</p>
+                </div>
+            }
         </div>
-        {expand ? 
-        <div className='user-info'>
-            <h6>Address</h6>
-            <p>{props.address}</p>
-            <h6>Phone</h6>
-            <p>{formatPhoneNumber(props.phone)}</p>
-            <h6>Created At</h6>
-            <p>{fornatDate(props.created)}</p>
-            <h6>Last Logged In</h6>
-            <p>{fornatDate(props.lastLog)}</p>
-        </div>
-        : <div></div>
-        }
-    </div>
     </Container>
   )
 }
@@ -91,6 +91,7 @@ const Container = styled.div`
     .heading{
         display: flex;
         align-items: center;
+        gap: 1rem;
     }
     .button{
         display: flex;
@@ -101,7 +102,7 @@ const Container = styled.div`
         color: var(--color-text-variant);
     }
     .user-info{
-        padding: 1.2rem 4rem;
+        padding: 1rem 4rem;
     }
     h6{ 
         padding-top: .6rem;
@@ -109,11 +110,6 @@ const Container = styled.div`
     p, h4, h6{
         margin-bottom: 0;
     }
-    ${'' /* svg{
-        height: 3rem;
-        width: 3rem;
-    } */}
-
 `;
 
 export default Card

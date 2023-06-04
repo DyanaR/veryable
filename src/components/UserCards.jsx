@@ -17,11 +17,11 @@ function createCard(user){
     />
 }
 
-
 const UserProfiles = () => {
   return (
   <div>
-    {Users.map(createCard)}
+    {/* incase Users is undfined doesnt return error */}
+    {Users && Users.map(createCard)}
   </div>
   )
 }
