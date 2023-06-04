@@ -42,7 +42,7 @@ const Card = (props) => {
                         width: '3rem', 
                         fill: role === "Administrator" ? "var(--color-adm)"
                         : role === "User" ? "var(--color-user)"
-                        : role === "Viewer" ? "var(--color-viewer)" : null
+                        : role === "Viewer" && "var(--color-viewer)" 
                     }} />
                 <div>
                     <h4>{props.name}</h4>
