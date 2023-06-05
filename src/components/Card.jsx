@@ -30,7 +30,7 @@ const Card = (props) => {
 
 
   return (
-    <Container>
+    <Container data-testid="card" >
         <div className='user-card'>
             <div className='user-profile'>
                 <div className='heading'>

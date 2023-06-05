@@ -5,6 +5,7 @@ import Users from '../assets/users.json';
 
 function createCard(user){
     return <Card 
+        data-testid='user'
         key={user.id}
         name={user.firstName + " " + user.lastName}
         hello={user.id}
@@ -20,7 +21,7 @@ function createCard(user){
 const UserProfiles = () => {
   return (
   <div>
-    {/* incase Users is undfined doesnt return error */}
+    {/* incase Users is undefined doesnt return error */}
     {Users && Users.map(createCard)}
   </div>
   )
