@@ -26,7 +26,9 @@ const Container = styled.div`
     }
     
     svg{
-        fill: var(--color-adm);    
+        fill: var(--color-adm);
+        width: 1.8rem;
+        height: 1.8rem;    
         }
 `;
 

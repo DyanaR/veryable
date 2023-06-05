@@ -36,8 +36,8 @@ const Card = (props) => {
                 <div className='heading'>
                     <UserIcon 
                         style={{
-                            height: '3rem', 
-                            width: '3rem', 
+                            height: '3.5rem', 
+                            width: '3.5rem', 
                             //color code user icon based on role
                             fill: role === "Administrator" ? "var(--color-adm)"
                             : role === "User" ? "var(--color-user)"
@@ -52,8 +52,8 @@ const Card = (props) => {
                 
                 <div className='button'>
                     {expand ? 
-                        <div type="button" onClick={showInfo}><Collapse /></div> 
-                        : <div type="button" onClick={showInfo}><Expand /></div>
+                        <div type="button" onClick={showInfo}><Collapse style={{fill: 'var(--color-text)'}} /></div> 
+                        : <div type="button" onClick={showInfo}><Expand style={{fill: 'var(--color-text)'}} /></div>
                     }
                 </div>
             </div>
@@ -78,7 +78,7 @@ const Card = (props) => {
 const Container = styled.div`
 
     .user-card{
-        margin: 1rem .75rem;
+        margin: 1.25rem 1rem;
         background-color: var(--color-white);
         padding: 1rem;
         box-shadow: 0 0 3px 1px var(--color-shadow);
@@ -100,7 +100,8 @@ const Container = styled.div`
         color: var(--color-text-variant);
     }
     .user-info{
-        padding: 1rem 4rem;
+        padding: 1rem 0;
+        padding-left: 4.5rem;
     }
     h6{ 
         padding-top: .6rem;
