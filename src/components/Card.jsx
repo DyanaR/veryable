@@ -25,7 +25,8 @@ const Card = (props) => {
 
     function formatDate(proposedDate){
         var date = moment(proposedDate);
-        return date.format('l LT')
+
+        return date.format('M/D/YY LT')
       }
 
 
