@@ -18,7 +18,7 @@ const Card = (props) => {
 
     function formatPhoneNumber(phoneNumberString) {
         //captures the number in divided parts
-        var match = ('' + phoneNumberString).match(/^(\d{3})(\d{3})(\d{4})$/);
+        var match = phoneNumberString.match(/^(\d{3})(\d{3})(\d{4})$/);
         //format number
         return '(' + match[1] + ') ' + match[2] + '-' + match[3];
       }
@@ -57,7 +57,7 @@ const Card = (props) => {
                     }
                 </div>
             </div>
-
+            
             {expand && 
                 <div className='user-info'>
                     <h6>Address</h6>

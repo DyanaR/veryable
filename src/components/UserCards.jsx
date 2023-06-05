@@ -5,7 +5,7 @@ import Users from '../assets/users.json';
 
 function createCard(user){
     return <Card 
-        data-testid='user'
+        //props getting data from json file, used in card.jsx
         key={user.id}
         name={user.firstName + " " + user.lastName}
         hello={user.id}
